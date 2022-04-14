@@ -29,8 +29,8 @@
 
 
 //            //check if user is logged in successfully
-//            System.Threading.Thread.Sleep(50);
-//            IWebElement helloHari = driver.FindElement(By.XPath("//*[@id='logoutForm']/ul/li/a"));
+//System.Threading.Thread.Sleep(50);
+//IWebElement helloHari = driver.FindElement(By.XPath("//*[@id='logoutForm']/ul/li/a"));
 //            if (helloHari.Text == "Hello hari!")
 //            {
 //                Console.WriteLine("login succefully");
@@ -85,7 +85,7 @@
 //            IWebElement priceText = driver.FindElement(By.XPath("//*[@id='TimeMaterialEditForm']/div/div[4]/label"));
 //            priceText.Click();
 //            IWebElement priceTextBox = driver.FindElement(By.XPath("//*[@id='TimeMaterialEditForm']/div/div[4]/div/span[1]/span/input[1]"));
-        
+
 //            priceTextBox.SendKeys("88");
 
 //            //select files 
@@ -136,7 +136,7 @@
 //            IWebElement priceEditTextBox = driver.FindElement(By.XPath("//*[@id='TimeMaterialEditForm']/div/div[4]/div/span[1]/span/input[1]"));
 //            //priceEditTextBox.Click();
 //            //priceEditTextBox.Clear();
-     
+
 //            priceEditTextBox.SendKeys("96");
 
 //            ////*[@id="TimeMaterialEditForm"]/div/div[4]/div/span[1]/span/input[1]

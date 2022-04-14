@@ -4,7 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using NUnit.Framework;
 using OpenQA.Selenium;
+using TurnUp.Utilities;
 
 namespace TurnUp.Pages
 {
@@ -12,16 +14,6 @@ namespace TurnUp.Pages
     {
        public void timeMaterialSteps(IWebDriver driver)
         {
-            IWebElement administrator = driver.FindElement(By.XPath("/html/body/div[3]/div/div/ul/li[5]/a"));
-            administrator.Click();
-            IWebElement timeMaterial = driver.FindElement(By.XPath("/html/body/div[3]/div/div/ul/li[5]/ul/li[3]/a"));
-            timeMaterial.Click();
-
-            //Click on Create New Button
-            IWebElement createNewItem = driver.FindElement(By.XPath("//*[@id='container']/p/a"));
-            createNewItem.Click();
-
-
             //Validate TypeCode and Select Material from TypeCode dropdown
             IWebElement typeCode = driver.FindElement(By.XPath("//*[@id='TimeMaterialEditForm']/div/div[1]/label"));
             typeCode.Click();
@@ -55,9 +47,20 @@ namespace TurnUp.Pages
             // click on save button
             IWebElement saveButton = driver.FindElement(By.XPath("//*[@id='SaveButton']"));
             saveButton.Click();
+            //Wait.waitToBeVisible(driver, "XPath", "//*[@id='tmsGrid']/div[3]/table/tbody/tr[1]/td[1]", 5);
+            Thread.Sleep(5000);
+            //click on go to last page button
+
+            IWebElement lastPageButton = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[4]/a[4]"));
+            Thread.Sleep(5000);
+            lastPageButton.Click();
+
+            //Check if record create is present in the table and has expected value
+
+            IWebElement codeItem = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[1]"));
 
 
-            
+            Assert.That(codeItem.Text == "12345", "Actual code and expected code do not match");
 
 
 
@@ -65,57 +68,57 @@ namespace TurnUp.Pages
 
         public void editPageSteps(IWebDriver driver)
         {
-            Thread.Sleep(5000);
-            IWebElement editButton = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[5]/a[1]"));
-            editButton.Click();
-            IWebElement codeEditTextBox = driver.FindElement(By.Name("Code"));
-            codeEditTextBox.Click();
-            codeEditTextBox.Clear();
-            codeEditTextBox.SendKeys("TU20220123");
+            //Thread.Sleep(5000);
+            //IWebElement editButton = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[5]/a[1]"));
+            //editButton.Click();
+            //IWebElement codeEditTextBox = driver.FindElement(By.Name("Code"));
+            //codeEditTextBox.Click();
+            //codeEditTextBox.Clear();
+            //codeEditTextBox.SendKeys("TU20220123");
 
-            IWebElement descriptionEditTextBox = driver.FindElement(By.XPath("//*[@id='Description']"));
-            descriptionEditTextBox.Click();
-            descriptionEditTextBox.Clear();
-            descriptionEditTextBox.SendKeys("leaking");
+            //IWebElement descriptionEditTextBox = driver.FindElement(By.XPath("//*[@id='Description']"));
+            //descriptionEditTextBox.Click();
+            //descriptionEditTextBox.Clear();
+            //descriptionEditTextBox.SendKeys("leaking");
 
-            IWebElement priceEditTextBox = driver.FindElement(By.XPath("//*[@id='TimeMaterialEditForm']/div/div[4]/div/span[1]/span/input[1]"));
-            //priceEditTextBox.Click();
-            //priceEditTextBox.Clear();
+            //IWebElement priceEditTextBox = driver.FindElement(By.XPath("//*[@id='TimeMaterialEditForm']/div/div[4]/div/span[1]/span/input[1]"));
+            ////priceEditTextBox.Click();
+            ////priceEditTextBox.Clear();
 
-            priceEditTextBox.SendKeys("96");
+            //priceEditTextBox.SendKeys("96");
 
-            ////*[@id="TimeMaterialEditForm"]/div/div[4]/div/span[1]/span/input[1]
-            // click on save button
-            IWebElement saveEditButton = driver.FindElement(By.XPath("//*[@id='SaveButton']"));
-            saveEditButton.Click();
+            //////*[@id="TimeMaterialEditForm"]/div/div[4]/div/span[1]/span/input[1]
+            //// click on save button
+            //IWebElement saveEditButton = driver.FindElement(By.XPath("//*[@id='SaveButton']"));
+            //saveEditButton.Click();
 
-            // click on BackToList
-            IWebElement backToListEditButton = driver.FindElement(By.XPath("//*[@id='container']/div/a"));
+            //// click on BackToList
+            //IWebElement backToListEditButton = driver.FindElement(By.XPath("//*[@id='container']/div/a"));
 
-            // click on lastpage
+            //// click on lastpage
 
-            Thread.Sleep(5000);
-            IWebElement lastPageEditButton = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[4]/a[4]"));
-            Thread.Sleep(5000);
-            lastPageEditButton.Click();
+            //Thread.Sleep(5000);
+            //IWebElement lastPageEditButton = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[4]/a[4]"));
+            //Thread.Sleep(5000);
+            //lastPageEditButton.Click();
 
-            //Assert
-            Thread.Sleep(3000);
-            IWebElement codeEditItem = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[1]"));
-            if (codeEditItem.Text == "TU20220123")
-            {
-                Console.WriteLine("testing pass");
-            }
-            else
-            {
-                Console.WriteLine("test failed");
-            }
+            ////Assert
+            //Thread.Sleep(3000);
+            //IWebElement codeEditItem = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[1]"));
+            //if (codeEditItem.Text == "TU20220123")
+            //{
+            //    Console.WriteLine("testing pass");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("test failed");
+            //}
         }
         public void deletetPageSteps(IWebDriver driver)
         {
-            IWebElement deleteButton = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[5]/a[2]"));
-            deleteButton.Click();
-            driver.SwitchTo().Alert().Accept();
+            //IWebElement deleteButton = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[5]/a[2]"));
+            //deleteButton.Click();
+            //driver.SwitchTo().Alert().Accept();
         }
     }
 }
