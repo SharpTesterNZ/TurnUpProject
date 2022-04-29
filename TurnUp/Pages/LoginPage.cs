@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework;
 using OpenQA.Selenium;
-using TurnUp.TM_Tests;
+//using TurnUp.TM_Tests;
 using TurnUp.Utilities;
 
 namespace TurnUp.Pages
@@ -38,7 +38,9 @@ namespace TurnUp.Pages
                 throw;
             }
 
-            
+            // 当我们做测试的时候，整个scenario 是用THEN 来做assertion 的，但是在用到的每个页面上，
+            // 我们要知道是否登陆成功，某种意义上来讲不是assertion，但是需要一种方法来判断
+            // 所以我们就是需要try catch
             
 
         }

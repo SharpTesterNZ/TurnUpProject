@@ -19,8 +19,6 @@ namespace TurnUp.Pages
             //Click on Create New Button
 
 
-            IWebElement createNewItem = driver.FindElement(By.XPath("//*[@id='container']/p/a"));
-            createNewItem.Click();
         }
     }
 }
